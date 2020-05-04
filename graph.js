@@ -4,13 +4,27 @@ var N = 30;
 var M = 30;
 var G = [ ];
 
-
 // constants
 var sqrt2 = 1.4142;
 var ds = [[0, -1, -1], [-1, 0, -1], [0, 1, -1], [1, 0, -1], [-1, -1, -sqrt2], [1, -1, -sqrt2], [-1, 1, -sqrt2] ,[1, 1, -sqrt2]]
 //var ds = [[0, -1, -1], [-1, 0, -1], [0, 1, -1], [1, 0, -1]];
 // var ds = [[1, 0, -1], [0, 1, -1], [-1, 0, -1], [0, -1, -1]];
 
+
+function redraw(x, y, d, f) {
+    //for(let [x, y, d] of players) {
+        for(i=0; i < N; ++i) {
+            dy = (y - i) * (y-i)
+
+            for(j=0; j < M; ++j)  {
+                dx = (x - j) * (x-j)
+                if(dx + dy < d*d) {
+                    f(i, j);
+                }                
+            }
+        }
+    //}
+}
 
 function valid(x, y) {
     return x < M && y < N && x >=0 && y >= 0;

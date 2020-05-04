@@ -43,12 +43,16 @@ $(document).ready(function(){
     console.log(G);
 
 
-    paint(10, 10, 5, function(x, y) { 
+    //paint(10, 10, 5, function(x, y) { 
+     //   var e = G[x][y];
+     //   e[0].style.background='red';
+     //   console.log(x, y, e);
+     //);
+
+    redraw(10, 10, 15, function(x, y) { 
         var e = G[x][y];
-        //e[0].innerHTML = "x";
         e[0].style.background='red';
         console.log(x, y, e);
-        //console.log(x, y); 
     });
 
     console.log("finished");
