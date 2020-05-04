@@ -19,31 +19,44 @@
 
 $(document).ready(function(){
     var table = $('<table>').addClass('foo');
+    
     for(i=0; i<N; i++) {
         var row = $('<tr>').addClass('r');
         var grow = [];
         for(j=0; j <M; ++j) {
-            var z = 'cell_'+i+'_'+j;
-            grow.push(z);
-            var col = $('<td id='+z+'>').addClass('c').click(function() {
+            //var z = 'cell_'+i+'_'+j;
+            //grow.push($(this));
+            var col = $('<td>').addClass('c').click(function() {
                 var x = parseInt( $(this).index() );
                 var y = parseInt( $(this).parent().index() );
-
-                console.log("td: (" + x + ", " + y + ")");
+                console.log(x, y);
             });
-            //col.setAttribute();
             row.append(col);
-            G.push(grow);
+            grow.push(col);
         }
+        G.push(grow);
         table.append(row);
     }
-
+    
     $('#canvas').append(table);
-    //console.log(G);
+    console.log(G);
+
+
+    paint(0, 0, 5, function(x, y) { 
+        var e = G[x][y];
+        e[0].innerHTML = "x";
+        e[0].style.background='red';
+        console.log(x, y, e);
+        //console.log(x, y); 
+    });
+
+    console.log("finished");
+
 });
 </script>
 
 <body>
+    <div id="canvas"></div>
 </body>
 
 </html>
