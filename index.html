@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
     <script type="text/javascript" src="graph.js"> </script>
+    <script type="text/javascript" src="queue.js"> </script>
     <style>
         table, th {
             border: 1px solid black;
@@ -42,9 +43,9 @@ $(document).ready(function(){
     console.log(G);
 
 
-    paint(0, 0, 5, function(x, y) { 
+    paint(10, 10, 5, function(x, y) { 
         var e = G[x][y];
-        e[0].innerHTML = "x";
+        //e[0].innerHTML = "x";
         e[0].style.background='red';
         console.log(x, y, e);
         //console.log(x, y); 
