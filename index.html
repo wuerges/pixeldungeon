@@ -18,6 +18,8 @@
 
 <script type="text/javascript">
 
+var points = [];
+
 $(document).ready(function(){
     var table = $('<table>').addClass('foo');
     
@@ -27,10 +29,24 @@ $(document).ready(function(){
         for(j=0; j <M; ++j) {
             //var z = 'cell_'+i+'_'+j;
             //grow.push($(this));
-            var col = $('<td>').addClass('c').click(function() {
+            var col = $('<td>').addClass('c').mouseover(function() {
                 var x = parseInt( $(this).index() );
                 var y = parseInt( $(this).parent().index() );
-                console.log(x, y);
+                //console.log(x, y);
+                points.push([x, y]);
+
+
+                redraw(points, 6, function(x, y) { 
+                    var e = G[x][y];
+                    e[0].style.background='red';
+                    //console.log(x, y, e);
+                });
+
+                paint(x, y, 5, function(x, y) { 
+                   var e = G[x][y];
+                   e[0].style.background='green';
+                //   console.log(x, y, e);
+                });
             });
             row.append(col);
             grow.push(col);
@@ -49,11 +65,11 @@ $(document).ready(function(){
      //   console.log(x, y, e);
      //);
 
-    redraw(10, 10, 15, function(x, y) { 
-        var e = G[x][y];
-        e[0].style.background='red';
-        console.log(x, y, e);
-    });
+    //redraw(10, 10, 20, function(x, y) { 
+        //var e = G[x][y];
+        //e[0].style.background='red';
+        //console.log(x, y, e);
+    //});
 
     console.log("finished");
 
